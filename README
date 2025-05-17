@@ -1,0 +1,107 @@
+# [Assistente_Investimento]
+
+[![Status do Projeto](https://img.shields.io/badge/status-Concluído-green)](https://github.com/douglasbatat/imersao-alura)
+[![Linguagem](https://img.shields.io/badge/linguagem-Python-blue)](https://www.python.org/)
+[![Licença](https://img.shields.io/badge/licença-MIT-green)](https://opensource.org/licenses/MIT)
+
+## 🎯 Sobre o Projeto
+
+Desenvolvido durante a Imersão Alura, este projeto apresenta um assistente de investimento inovador construído em Python. Sua principal característica reside na utilização de um chatbot interativo para coletar informações cruciais do usuário, seguido por um sistema robusto de **cinco agentes especializados** que trabalham em conjunto para fornecer recomendações de investimento personalizadas e otimização de portfólio.
+
+O objetivo principal é simplificar o processo de investimento, guiando o usuário desde a coleta de suas necessidades e perfil até a sugestão de estratégias alinhadas com seus objetivos e tolerância a riscos.
+
+## ✨ Arquitetura e Fluxo de Trabalho
+
+O assistente de investimento opera através de um fluxo bem definido, orquestrado por cinco agentes distintos:
+
+1.  **Agente de Interface com o Usuário (AIU):**
+    * Responsável por interagir diretamente com o usuário através de um chatbot.
+    * Coleta informações iniciais sobre os objetivos financeiros, horizonte de investimento e outras preferências do usuário.
+    * Garante uma comunicação clara e amigável para facilitar a entrada de dados.
+
+2.  **Agente de Coleta e Processamento de Dados (ACPD):**
+    * Recebe os dados coletados pelo AIU e os processa para garantir sua integridade e usabilidade.
+    * Pode ser responsável por buscar dados adicionais relevantes, como informações demográficas ou socioeconômicas (se aplicável).
+    * Prepara os dados para serem utilizados pelos agentes subsequentes.
+
+3.  **Agente de Análise de Perfil e Risco (AAPR):**
+    * Utiliza os dados processados pelo ACPD para analisar o perfil de investidor do usuário.
+    * Avalia a tolerância ao risco com base nas respostas fornecidas.
+    * Define o nível de risco adequado para as recomendações futuras.
+
+4.  **Agente de Análise de Mercado e Ativos (AAMA):**
+    * Realiza a análise do mercado financeiro, buscando informações sobre diversos ativos (ações, fundos, etc.).
+    * Pode utilizar APIs financeiras e outras fontes de dados para obter informações atualizadas sobre o desempenho e as tendências do mercado.
+    * Identifica oportunidades e riscos em diferentes classes de ativos.
+
+5.  **Agente de Geração de Recomendações e Otimização de Portfólio (AGROP):**
+    * Com base nas análises do AAPR (perfil de risco) e do AAMA (análise de mercado), este agente gera recomendações de investimento personalizadas.
+    * Propõe uma alocação de portfólio otimizada para os objetivos e o perfil de risco do usuário.
+    * Pode incluir sugestões de diversificação e estratégias de longo prazo.
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Linguagem de Programação:** Python
+* **Chatbot:** [google-genai]
+* **Bibliotecas/Frameworks:** 
+    * [google-adk]
+* **APIs (se aplicável):**
+    * [GOOGLE_API_KEY]
+* **Outras Ferramentas:** [Coolab, Gemini, Google AI Studio]
+
+## 🚀 Como Utilizar
+
+1.  **Pré-requisitos:**
+    Antes de executar o código, certifique-se de ter o seguinte:
+    
+    Ambiente Google Colab: O script foi testado e otimizado para o Google Colab.
+    Chave da API Google Gemini: Você precisará de uma chave da API Google Gemini. Obtenha uma no AI Studio ou na Google Cloud Console.
+    Chave da API Armazenada no Google Colab Secrets: A chave da API deve ser armazenada nos "Secrets" do Google Colab com o nome GOOGLE_API_KEY.
+2.  **Instalação:**
+    ```bash
+    git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+    cd seu-repositorio
+    pip install -r requirements.txt
+    ```
+3.  **Execução:**
+    Siga estes passos para executar o script no Google Colab:
+    
+    Abra o Notebook no Google Colab: Faça upload do arquivo .ipynb contendo o código para o seu ambiente Google Colab.
+    
+    Configure a Chave da API: No Google Colab, clique no ícone de chave (Secrets) na barra lateral esquerda. Adicione um novo "Secret" com o nome GOOGLE_API_KEY e cole o valor da sua chave da API Google Gemini.
+    
+    Execute as Células do Notebook Sequencialmente: O notebook é estruturado em células. Você deve executar as células na ordem em que aparecem.
+    
+    Célula de Ambiente: Esta célula inicializa o ambiente. Ela instala as bibliotecas necessárias (google-genai, google-adk) usando comandos mágicos %pip e configura a chave da API lendo-a dos secrets do Colab. Ela também importa todas as bibliotecas e define as funções auxiliares call_agent e to_markdown.
+    Células de Definição dos Agentes: Cada uma das células seguintes define uma função Python que representa um dos agentes (Interface com o Usuário, Coleta e Processamento de Dados, Análise de Perfil e Risco, Análise de Mercado e Ativos, Geração de Recomendações e Otimização de Portfólio). A execução destas células apenas define as funções, não as executa.
+    Célula Principal de Execução: Esta é a última célula no script. Ela contém a lógica principal para interagir com o usuário, coletar suas preferências de investimento e chamar a sequência de agentes.
+    Interaja com o Assistente: Após executar a célula principal de execução, o assistente começará a fazer perguntas no console do notebook sobre o objetivo, prazo, experiência, valor e risco do investimento. Responda às perguntas digitando o número correspondente à sua escolha ou fornecendo o texto solicitado e pressionando Enter.
+    
+    Observe a Execução dos Agentes: À medida que você fornece as informações, o script chamará sequencialmente as funções que representam os agentes. A saída de cada agente será exibida no notebook, identificada por títulos como "Resultado do Agente de Interface com o Usuário (AIU)". A função display(to_markdown(...)) é usada para formatar a saída em Markdown para melhor legibilidade.
+    
+    Visualize as Recomendações: O fluxo terminará com a execução do Agente de Geração de Recomendações e Otimização de Portfólio (AGROP), que exibirá as recomendações de investimento finais com base nas informações fornecidas e nas análises dos agentes anteriores.
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Se você tiver ideias para aprimorar a lógica dos agentes, otimizar o chatbot ou adicionar novas funcionalidades, fique à vontade para colaborar.
+
+1.  Faça um fork do repositório.
+2.  Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`).
+3.  Faça seus commits (`git commit -m 'Adiciona melhoria no AGROP para considerar renda fixa'`).
+4.  Faça o push para a branch (`git push origin feature/nova-funcionalidade`).
+5.  Abra um Pull Request.
+
+## 📄 Licença
+
+Este projeto está sob a licença [MIT] - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 🧑‍💻 Autor
+
+[Douglas Rustiguelli Vieira]
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-SeuPerfilNoLinkedIn-blue)](https://www.linkedin.com/in/douglas-rustiguelli-vieira-24aab331/)
+[![GitHub](https://img.shields.io/badge/GitHub-SeuUsuarioNoGitHub-lightgray)](https://github.com/douglasbatat)
+
+## 🙌 Agradecimentos
+
+Gostaria de expressar minha gratidão à [Alura](https://www.alura.com.br/) pela imersão enriquecedora que possibilitou o desenvolvimento deste projeto inovador. Agradeço também minha família por todo apoio.
